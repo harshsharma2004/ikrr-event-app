@@ -1,0 +1,175 @@
+// Overwrite this file at /prisma/schema.prisma
+// This is your complete database "blueprint"
+
+// Defines the database provider (PostgreSQL) and connection URL
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Defines the Prisma client generator
+// This tells Prisma to generate the client into your node_modules
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Defines the User Role Enum
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+// Defines the Booking Status Enum
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+// User Model: For authentication and roles
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  role          Role      @default(CUSTOMER) // All new users are CUSTOMERs by default
+
+  // Relations
+  accounts      Account[]
+  sessions      Session[]
+  bookings      EventQuery[]  @relation("UserBookings")
+  simpleQueries SimpleQuery[] @relation("UserQueries")
+}
+
+// Account Model: Required by Auth.js for Google/other providers
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+// Session Model: Required by Auth.js for managing sessions
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// VerificationToken Model: Required by Auth.js for email magic links (if ever needed)
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// EventQuery Model: For the detailed "Book Your Event" form
+model EventQuery {
+  id              String        @id @default(cuid())
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  status          BookingStatus @default(PENDING) // Default status for new bookings
+  
+  // Q1: Event Types
+  eventTypes      String[] // Stores a list, e.g., ["Wedding", "Haldi", "Sangeet"]
+  otherEvent      String?  // Text for the "Other" box
+  
+  // Q2: Date, Time, Venue
+  eventDates      String[] // Array of dates for multiple event dates
+  eventTimes      String[] // Array of corresponding times
+  eventVenue      String
+  
+  // Q3: Attendees
+  attendeeCount   Int
+  
+  // Q4: Setup/Arrangements
+  setupDetails    String?
+  
+  // Q5: Theme/Decor
+  themeDetails    String?
+  
+  // Q6: AV/Lighting/Stage
+  avNeeds         String?
+  
+  // Q7: Food/Refreshments
+  foodNeeds       String?
+  
+  // Q8: Branding/Display
+  brandingNeeds   String?
+  brandingFileUrl String?  // The URL from Cloudinary
+  
+  // Q9: Budget
+  budget          String
+  
+  // Q10: Point of Contact
+  poc             String
+  
+  // Relation to User
+  user   User   @relation("UserBookings", fields: [userId], references: [id])
+  userId String
+}
+
+// SimpleQuery Model: For the simple footer contact form
+model SimpleQuery {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Form fields
+  name      String
+  email     String
+  phone     String?
+  message   String
+  
+  // Status and management
+  status    String   @default("NEW") // NEW, IN_PROGRESS, RESOLVED, CLOSED
+  notes     String?  // Admin notes
+  
+  // Relation to User (optional, in case a logged-in user uses it)
+  user   User?   @relation("UserQueries", fields: [userId], references: [id], onDelete: SetNull)
+  userId String?
+}
+
+// GalleryImage Model: For the Admin-managed gallery
+model GalleryImage {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  imageUrl  String   // URL from image storage
+  caption   String?
+  eventId   String   // "event-1", "event-2", "event-3"
+  order     Int      @default(0) // For ordering images
+}
+
+// EventPage Model: For Admin-managed content on dynamic event pages
+model EventPage {
+  id          String   @id @default(cuid())
+  slug        String   @unique // "weddings", "corporate-events"
+  title       String
+  description String?
+  content     String   // Will store rich text or markdown
+}
+
+// AboutImage Model: For the About section image (founders image)
+model AboutImage {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  imageUrl  String   // Base64 encoded image URL
+}
