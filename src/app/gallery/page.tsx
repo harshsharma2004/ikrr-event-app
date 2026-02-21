@@ -53,6 +53,7 @@ export default function GalleryPage(): React.ReactElement {
     "event-2": true,
     "event-3": true,
   });
+  // State to track the current image index for each event's carousel
   const [currentImageIndices, setCurrentImageIndices] = useState<Record<string, number>>({
     "event-1": 0,
     "event-2": 0,
