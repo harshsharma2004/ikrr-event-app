@@ -20,6 +20,27 @@ interface EventCardData {
   description: string;
 }
 
+const eventCards: EventCardData[] = [
+  {
+    id: "event-1",
+    label: "Event 1",
+    title: "Grand Wedding Celebration",
+    description: "A sneak peek of décor and moments.",
+  },
+  {
+    id: "event-2",
+    label: "Event 2",
+    title: "Tech Horizon Corporate Launch",
+    description: "Staging and ambiance highlights.",
+  },
+  {
+    id: "event-3",
+    label: "Event 3",
+    title: "Exclusive Private Soirée",
+    description: "Candid shots and setups.",
+  },
+];
+
 export default function GalleryPage(): React.ReactElement {
   const { data: session } = useSession();
   const [eventImagesMap, setEventImagesMap] = useState<Record<string, GalleryImage[]>>({
@@ -33,36 +54,15 @@ export default function GalleryPage(): React.ReactElement {
     "event-3": true,
   });
   const [currentImageIndices, setCurrentImageIndices] = useState<Record<string, number>>({
-  "event-1": 0,
-  "event-2": 0,
-  "event-3": 0, // ... existing values
-});
+    "event-1": 0,
+    "event-2": 0,
+    "event-3": 0,
+  });
 
   const [uploadingEvent, setUploadingEvent] = useState<string | null>(null);
 
   const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "harsh.141615@gmail.com";
   const isAdmin = session?.user?.email === ADMIN_EMAIL;
-
-  const eventCards: EventCardData[] = [
-    {
-      id: "event-1",
-      label: "Event 1",
-      title: "Grand Wedding Celebration",
-      description: "A sneak peek of décor and moments.",
-    },
-    {
-      id: "event-2",
-      label: "Event 2",
-      title: "Tech Horizon Corporate Launch",
-      description: "Staging and ambiance highlights.",
-    },
-    {
-      id: "event-3",
-      label: "Event 3",
-      title: "Exclusive Private Soirée",
-      description: "Candid shots and setups.",
-    },
-  ];
 
   // Fetch images for all events
   useEffect(() => {
