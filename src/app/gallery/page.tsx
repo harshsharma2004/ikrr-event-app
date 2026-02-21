@@ -160,7 +160,7 @@ export default function GalleryPage(): React.ReactElement {
     if (!images || images.length === 0) return;
     setCurrentImageIndices((prev) => ({
       ...prev,
-      [eventId]: (prev[eventId] + 1) % images.length,
+      [eventId]: ((prev[eventId] || 0) + 1) % images.length,
     }));
   };
 
@@ -169,7 +169,7 @@ export default function GalleryPage(): React.ReactElement {
     if (!images || images.length === 0) return;
     setCurrentImageIndices((prev) => ({
       ...prev,
-      [eventId]: (prev[eventId] - 1 + images.length) % images.length,
+      [eventId]: ((prev[eventId] || 0) - 1 + images.length) % images.length,
     }));
   };
 
