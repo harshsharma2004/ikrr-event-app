@@ -20,7 +20,7 @@ interface EventCardData {
   description: string;
 }
 
-export default function GalleryPage(): JSX.Element {
+export default function GalleryPage(): React.ReactElement {
   const { data: session } = useSession();
   const [eventImagesMap, setEventImagesMap] = useState<Record<string, GalleryImage[]>>({
     "event-1": [],
