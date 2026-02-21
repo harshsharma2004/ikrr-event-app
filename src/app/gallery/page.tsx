@@ -27,12 +27,12 @@ export default function GalleryPage(): React.ReactElement {
     "event-2": [],
     "event-3": [],
   });
-  const [isLoading, setIsLoading] = useState({
+  const [isLoading, setIsLoading] = useState<Record<string, boolean>>({
     "event-1": true,
     "event-2": true,
     "event-3": true,
   });
-  const [currentImageIndices, setCurrentImageIndices] = useState({
+  const [currentImageIndices, setCurrentImageIndices] = useState<Record<string, number>>({
     "event-1": 0,
     "event-2": 0,
     "event-3": 0,
