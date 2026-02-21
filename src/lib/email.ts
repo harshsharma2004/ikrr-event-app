@@ -1,14 +1,16 @@
-import { Resend } from "resend";
+import { Resend } from 'resend';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const resend = new Resend(RESEND_API_KEY);
 
-const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "harsh.141615@gmail.com";
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "harsh.141615@gmail.com";
 const COMPANY_NAME = "IKRR Events";
 const COMPANY_PHONE = "+91-XXXXXXXXXX";
+
 // IMPORTANT: Use a verified domain email from https://resend.com/domains
-// Change this to your verified domain email (e.g., noreply@yourdomain.com or events@ikrr.com)
-const NOREPLY_EMAIL = process.env.NEXT_PUBLIC_NOREPLY_EMAIL || "onboarding@resend.dev";
+// If your domain (ikrr.co.in) is not verified on Resend yet, you MUST use "onboarding@resend.dev"
+// We are defaulting to "onboarding@resend.dev" to ensure emails work during development.
+const NOREPLY_EMAIL = process.env.NOREPLY_EMAIL || "onboarding@resend.dev";
 
 if (!RESEND_API_KEY) {
   console.warn("⚠️ RESEND_API_KEY is not configured. Emails will not be sent.");
@@ -17,17 +19,9 @@ if (!RESEND_API_KEY) {
 }
 
 export async function sendBookingConfirmationEmail(
-  userEmail: string,
-  userName: string,
-  bookingDetails: {
-    id: string;
-    eventTypes: string[];
-    eventDates: string[];
-    eventVenue: string;
-    attendeeCount: number;
-    budget: string;
-    message?: string;
-  }
+  userEmail: string, 
+  userName: string, 
+  bookingDetails: any
 ) {
   try {
     if (!RESEND_API_KEY) {
@@ -37,6 +31,7 @@ export async function sendBookingConfirmationEmail(
 
     // Step 1: Send detailed booking info to ADMIN
     console.log(`\n📧 Step 1: Sending booking details to admin...`);
+    
     const adminEmailContent = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f5f7;">
       <div style="text-align: center; margin-bottom: 30px;">
@@ -95,15 +90,15 @@ export async function sendBookingConfirmationEmail(
       </div>
     </div>
   `;
-    
+
     const adminResponse = await resend.emails.send({
       from: NOREPLY_EMAIL,
       to: ADMIN_EMAIL,
       subject: `🎯 NEW BOOKING: ${bookingDetails.id} - ${userName}`,
-      html: adminEmailContent,
+      html: adminEmailContent
     });
 
-    if ('error' in adminResponse && adminResponse.error) {
+    if (adminResponse.error) {
       console.error("❌ Admin email failed:", adminResponse.error.message);
     } else {
       console.log("✓ Admin email sent successfully");
@@ -175,10 +170,10 @@ export async function sendBookingConfirmationEmail(
       from: NOREPLY_EMAIL,
       to: userEmail,
       subject: `Booking Confirmation - Reference #${bookingDetails.id}`,
-      html: customerEmailContent,
+      html: customerEmailContent
     });
 
-    if ('error' in customerResponse && customerResponse.error) {
+    if (customerResponse.error) {
       console.warn("⚠️ Customer email failed (this is expected with test domain)");
       console.warn(`   Note: To send to customer email, verify a domain at resend.com/domains`);
     } else {
@@ -187,6 +182,7 @@ export async function sendBookingConfirmationEmail(
 
     console.log(`\n✅ Booking emails process complete!\n`);
     return { success: true, messageId: 'sent' };
+
   } catch (error) {
     console.error("❌ Error sending booking emails:", error);
     return { success: false, error };
@@ -194,13 +190,9 @@ export async function sendBookingConfirmationEmail(
 }
 
 export async function sendQueryConfirmationEmail(
-  userEmail: string,
-  userName: string,
-  queryDetails: {
-    id: string;
-    message: string;
-    phone?: string;
-  }
+  userEmail: string, 
+  userName: string, 
+  queryDetails: any
 ) {
   try {
     if (!RESEND_API_KEY) {
@@ -210,6 +202,7 @@ export async function sendQueryConfirmationEmail(
 
     // Step 1: Send query details to ADMIN
     console.log(`\n📧 Step 1: Sending query details to admin...`);
+    
     const adminEmailContent = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f5f7;">
       <div style="text-align: center; margin-bottom: 30px;">
@@ -258,10 +251,10 @@ export async function sendQueryConfirmationEmail(
       from: NOREPLY_EMAIL,
       to: ADMIN_EMAIL,
       subject: `🎯 NEW QUERY: ${queryDetails.id} - ${userName}`,
-      html: adminEmailContent,
+      html: adminEmailContent
     });
 
-    if ('error' in adminResponse && adminResponse.error) {
+    if (adminResponse.error) {
       console.error("❌ Admin email failed:", adminResponse.error.message);
     } else {
       console.log("✓ Admin email sent successfully");
@@ -329,10 +322,10 @@ export async function sendQueryConfirmationEmail(
       from: NOREPLY_EMAIL,
       to: userEmail,
       subject: `Query Confirmation - Reference #${queryDetails.id}`,
-      html: customerEmailContent,
+      html: customerEmailContent
     });
 
-    if ('error' in customerResponse && customerResponse.error) {
+    if (customerResponse.error) {
       console.warn("⚠️ Customer email failed (this is expected with test domain)");
       console.warn(`   Note: To send to customer email, verify a domain at resend.com/domains`);
     } else {
@@ -341,6 +334,7 @@ export async function sendQueryConfirmationEmail(
 
     console.log(`\n✅ Query emails process complete!\n`);
     return { success: true, messageId: 'sent' };
+
   } catch (error) {
     console.error("❌ Error sending query emails:", error);
     return { success: false, error };

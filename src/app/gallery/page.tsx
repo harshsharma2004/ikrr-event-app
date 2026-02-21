@@ -33,10 +33,11 @@ export default function GalleryPage(): React.ReactElement {
     "event-3": true,
   });
   const [currentImageIndices, setCurrentImageIndices] = useState<Record<string, number>>({
-    "event-1": 0,
-    "event-2": 0,
-    "event-3": 0,
-  });
+  "event-1": 0,
+  "event-2": 0,
+  "event-3": 0, // ... existing values
+});
+
   const [uploadingEvent, setUploadingEvent] = useState<string | null>(null);
 
   const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "harsh.141615@gmail.com";
@@ -156,6 +157,7 @@ export default function GalleryPage(): React.ReactElement {
   // Navigation for carousel
   const nextImage = (eventId: string) => {
     const images = eventImagesMap[eventId];
+    if (!images || images.length === 0) return;
     setCurrentImageIndices((prev) => ({
       ...prev,
       [eventId]: (prev[eventId] + 1) % images.length,
@@ -164,6 +166,7 @@ export default function GalleryPage(): React.ReactElement {
 
   const prevImage = (eventId: string) => {
     const images = eventImagesMap[eventId];
+    if (!images || images.length === 0) return;
     setCurrentImageIndices((prev) => ({
       ...prev,
       [eventId]: (prev[eventId] - 1 + images.length) % images.length,
