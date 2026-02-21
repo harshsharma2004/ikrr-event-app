@@ -53,7 +53,7 @@ export default function GalleryPage(): React.ReactElement {
     "event-2": true,
     "event-3": true,
   });
-  // State to track the current image index for each event's carousel
+  // State to track the current image index for each event's carousel (typed for string indexing)
   const [currentImageIndices, setCurrentImageIndices] = useState<Record<string, number>>({
     "event-1": 0,
     "event-2": 0,
@@ -159,19 +159,19 @@ export default function GalleryPage(): React.ReactElement {
   const nextImage = (eventId: string) => {
     const images = eventImagesMap[eventId];
     if (!images || images.length === 0) return;
-    setCurrentImageIndices((prev) => ({
-      ...prev,
-      [eventId]: ((prev[eventId] || 0) + 1) % images.length,
-    }));
+    setCurrentImageIndices((prev) => {
+      const current = prev[eventId] || 0;
+      return { ...prev, [eventId]: (current + 1) % images.length };
+    });
   };
 
   const prevImage = (eventId: string) => {
     const images = eventImagesMap[eventId];
     if (!images || images.length === 0) return;
-    setCurrentImageIndices((prev) => ({
-      ...prev,
-      [eventId]: ((prev[eventId] || 0) - 1 + images.length) % images.length,
-    }));
+    setCurrentImageIndices((prev) => {
+      const current = prev[eventId] || 0;
+      return { ...prev, [eventId]: (current - 1 + images.length) % images.length };
+    });
   };
 
   return (
