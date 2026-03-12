@@ -141,7 +141,7 @@ export default function HomePage() {
             priority 
           />
           {/* Gradient Overlay - CRITICAL FOR NAV MERGE */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-brand-dark-blue"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/50 to-brand-dark-blue"></div>
         </div>
         
         {/* Hero Content */}
@@ -153,7 +153,7 @@ export default function HomePage() {
 
           {/* Tagline - Light gray for readability on dark image */}
           <p className="text-2xl sm:text-3xl text-gray-200 mb-8 italic font-light tracking-wide drop-shadow-md">
-            "Your Story, Our Stage"
+            &quot;Your Story, Our Stage&quot;
           </p>
 
           {/* Description - White/Gray */}
@@ -184,17 +184,21 @@ export default function HomePage() {
           <p className="text-[#4B3C55]">Loading...</p>
         </div>
       ) : aboutImageUrl ? (
-        <img 
+        <Image
           src={aboutImageUrl}
-          alt="Founders" 
-          className="relative rounded-lg shadow-2xl w-full transform group-hover:-translate-y-2 transition-transform duration-500 object-cover"
+          alt="Founders"
+          width={600}
+          height={400}
+          className="rounded-lg shadow-2xl w-full transform group-hover:-translate-y-2 transition-transform duration-500 object-cover"
         />
       ) : (
         <div className="relative rounded-lg shadow-2xl w-full bg-gray-300 h-96 flex flex-col items-center justify-center">
-          <img 
-            src="https://placehold.co/600x400/1E293B/D4AF37?text=Rajesh+Agnihotri+%26+Indu+Yadav" 
-            alt="Founders Rajesh Agnihotri & Indu Yadav" 
-            className="relative rounded-lg shadow-2xl w-full transform group-hover:-translate-y-2 transition-transform duration-500"
+          <Image
+            src="https://placehold.co/600x400/1E293B/D4AF37?text=Rajesh+Agnihotri+%26+Indu+Yadav"
+            alt="Founders Rajesh Agnihotri & Indu Yadav"
+            width={600}
+            height={400}
+            className="rounded-lg shadow-2xl w-full transform group-hover:-translate-y-2 transition-transform duration-500"
           />
         </div>
       )}
@@ -265,7 +269,7 @@ export default function HomePage() {
 <section id="services-preview" className="py-24 sm:py-32 relative overflow-hidden bg-[#C6BACE]">
   
   {/* Decorative line */}
-  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent"></div>
+  <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-brand-gold/40 to-transparent"></div>
 
   <div className="container mx-auto px-6 max-w-7xl text-center relative z-10">
     
