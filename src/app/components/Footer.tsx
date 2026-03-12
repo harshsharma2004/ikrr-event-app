@@ -3,7 +3,7 @@
 
 import { useState, FormEvent } from 'react';
 import { usePathname } from "next/navigation";
-import { MapPin, Mail, Phone, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { MapPin, Mail, Phone } from 'lucide-react';
 
 export default function Footer() {
   const [formStatus, setFormStatus] = useState<string>('');
@@ -102,18 +102,6 @@ export default function Footer() {
 
             </div>
 
-            {/* Social Icons */}
-            <div className={`flex space-x-6 mt-10 ${isGalleryPage ? 'justify-center' : ''}`}>
-              <a href="#" className="text-[#4B3C55]/70 hover:text-[#4B3C55] transition-colors">
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-[#4B3C55]/70 hover:text-[#4B3C55] transition-colors">
-                <Instagram className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-[#4B3C55]/70 hover:text-[#4B3C55] transition-colors">
-                <Linkedin className="w-6 h-6" />
-              </a>
-            </div>
           </div>
           
           {/* Contact Form - Hidden on Gallery Page */}
