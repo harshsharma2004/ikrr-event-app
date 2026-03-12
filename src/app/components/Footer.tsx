@@ -184,8 +184,19 @@ export default function Footer() {
           )}
         </div>
         
-        <div className="text-center border-t border-[#4B3C55]/10 pt-8 mt-16 text-[#4B3C55]/60 text-sm">
+        <div className="text-center border-t border-[#4B3C55]/10 pt-8 mt-16 text-[#4B3C55]/60 text-sm space-y-3">
             <p>&copy; {new Date().getFullYear()} IK Regal Revelry. All Rights Reserved.</p>
+            <p>
+              Designed & Developed by{' '}
+              <a 
+                href="https://www.linkedin.com/in/harsh-sharma-qwer8303" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-brand-gold hover:text-brand-gold/80 font-semibold transition-colors underline"
+              >
+                Harsh Sharma
+              </a>
+            </p>
         </div>
       </div>
     </footer>
