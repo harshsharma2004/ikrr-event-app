@@ -62,11 +62,11 @@ export default function Footer() {
           <div className={isGalleryPage ? 'max-w-2xl' : ''}>
             {/* Heading Style */}
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#4B3C55]">
-              Let's Plan Your <span className="text-[#4B3C55]">Next Event</span>
+              Let&apos;s Plan Your <span className="text-[#4B3C55]">Next Event</span>
             </h2>
 
             <p className="mb-8 text-lg text-[#4B3C55]/80">
-              Get in touch for a free consultation. We'd love to hear your story.
+              Get in touch for a free consultation. We&apos;d love to hear your story.
             </p>
 
             {/* Contact Details */}
@@ -76,8 +76,8 @@ export default function Footer() {
                 <span className="text-[#4B3C55]">
                   <Phone className="w-5 h-5" />
                 </span>
-                <a href="tel:+919910558865" className="text-[#4B3C55] hover:text-[#2D2433] text-lg transition-colors">
-                  (91) 99105 58865
+                <a href="tel:+919910558865 , +919217578867" className="text-[#4B3C55] hover:text-[#2D2433] text-lg transition-colors">
+                  (91) 99105 58865 , (91) 92175 78867
                 </a>
               </div>
 

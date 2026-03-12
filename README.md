@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IKRR Event App
 
-## Getting Started
+## 🚀 Overview
+**IKRR Event App** is a dynamic event management platform built to bridge the gap between event organizers and attendees. Developed using **Next.js** and **React**, this application provides a seamless interface for discovering, registering, and managing college and local events.
 
-First, run the development server:
+Whether you are a student looking for the next big hackathon or an organizer managing registrations, IKRR Event App simplifies the entire process with a modern, responsive user experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Key Features
+- **Event Discovery:** Browse upcoming events with detailed descriptions and schedules.
+- **Seamless Registration:** Easy-to-use registration flow for attendees.
+- **Organizer Dashboard:** Tools to create, update, and manage event listings.
+- **Responsive Design:** Fully optimized for mobile, tablet, and desktop views.
+- **Secure Authentication:** User login and profile management.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
+- **Frontend Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **UI Library:** [React](https://react.dev/)
+- **Environment Management:** Dotenv
+- **Linting:** ESLint
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Follow these steps to set up the project locally.
 
-## Learn More
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/ikrr_event_app.git
+   cd ikrr_event_app
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Open the app:**
+   Visit [http://localhost:3000](http://localhost:3000) in your browser.
