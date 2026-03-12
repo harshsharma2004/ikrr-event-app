@@ -256,7 +256,7 @@ GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 
 # Admin Configuration
-NEXT_PUBLIC_ADMIN_EMAIL="admin@ikrr.co.in"
+NEXT_PUBLIC_ADMIN_EMAIL="info@ikrr.co.in"
 
 # Email Service (Resend)
 RESEND_API_KEY="your-resend-api-key"

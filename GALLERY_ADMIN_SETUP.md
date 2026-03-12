@@ -1,7 +1,7 @@
 # Admin Gallery Management System - Setup & Usage Guide
 
 ## Overview
-This guide explains how to use the new admin gallery system that allows the admin (harsh.141615.gmail.com) to upload and manage photos on the three gallery event pages (Event 1, Event 2, Event 3).
+This guide explains how to use the new admin gallery system that allows the admin (info@ikrr.co.in) to upload and manage photos on the three gallery event pages (Event 1, Event 2, Event 3).
 
 ## Setup Instructions
 
@@ -9,7 +9,7 @@ This guide explains how to use the new admin gallery system that allows the admi
 Add the following to your `.env.local` file (in the root of your project):
 
 ```env
-NEXT_PUBLIC_ADMIN_EMAIL=harsh.141615.gmail.com
+NEXT_PUBLIC_ADMIN_EMAIL=info@ikrr.co.in
 DATABASE_URL=your_postgresql_database_url
 AUTH_GOOGLE_ID=your_google_client_id
 AUTH_GOOGLE_SECRET=your_google_client_secret
@@ -43,7 +43,7 @@ npm run dev
 
 ## How to Use
 
-### For Admins (harsh.141615.gmail.com)
+### For Admins (info@ikrr.co.in)
 
 #### Adding Photos
 1. Navigate to one of the gallery pages:
@@ -51,7 +51,7 @@ npm run dev
    - `/gallery/event-2` - Tech Horizon Corporate Launch
    - `/gallery/event-3` - Exclusive Private Soirée
 
-2. Log in with your Google account (harsh.141615.gmail.com)
+2. Log in with your Google account (info@ikrr.co.in)
 
 3. You'll see an "Add Photo" button in the top right corner of the page
 
@@ -152,7 +152,7 @@ Returns all images for the specified event.
 - Ensure you're logged in with the admin email
 
 ### "Unauthorized" error
-- You must be logged in with the admin email: harsh.141615.gmail.com
+- You must be logged in with the admin email: info@ikrr.co.in
 - Clear browser cookies and log back in
 - Verify your Google account email matches the admin email
 

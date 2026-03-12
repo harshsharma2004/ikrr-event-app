@@ -11,7 +11,7 @@ This guide explains the complete queries management system that allows customers
 - **Track Status:** Monitor the status of your queries (NEW, IN_PROGRESS, RESOLVED, CLOSED)
 - **Automatic Tracking:** Queries are linked to your account when logged in
 
-### For Admin (harsh.141615.gmail.com)
+### For Admin (info@ikrr.co.in)
 - **View All Queries:** Access `/queries` to see all customer queries
 - **Manage Status:** Update query status (NEW, IN_PROGRESS, RESOLVED, CLOSED)
 - **Add Notes:** Add admin notes to queries for internal reference
@@ -62,7 +62,7 @@ This will:
 Ensure your `.env.local` has:
 
 ```env
-NEXT_PUBLIC_ADMIN_EMAIL=harsh.141615.gmail.com
+NEXT_PUBLIC_ADMIN_EMAIL=info@ikrr.co.in
 DATABASE_URL=your_postgresql_url
 ```
 
@@ -87,7 +87,7 @@ npm run dev
 ### Admin Pages
 
 #### `/queries`
-- **Access:** Admin only (harsh.141615.gmail.com)
+- **Access:** Admin only (info@ikrr.co.in)
 - **Shows:** All queries from all customers
 - **Features:**
   - Filter by status (NEW, IN_PROGRESS, RESOLVED, CLOSED)
@@ -200,7 +200,7 @@ Requires: Admin authentication
 4. Can see status and updates from admin
 
 ### Admin Flow: Manage Queries
-1. Admin logs in with harsh.141615.gmail.com
+1. Admin logs in with info@ikrr.co.in
 2. Navigates to "Manage All Queries" from profile menu
 3. Views all customer queries (filtered by status)
 4. Clicks edit button on a query
@@ -223,12 +223,12 @@ Requires: Admin authentication
 
 ### Authorization
 - **Customers:** Can only view their own queries
-- **Admin:** Can view and modify all queries
+- **Admin:** Can view and modify all queries (info@ikrr.co.in)
 - **Non-authenticated users:** Can submit queries but need to log in to view them
 
 ### Validation
 - Email verification on submission
-- Admin email verified via session (`harsh.141615.gmail.com`)
+- Admin email verified via session (`info@ikrr.co.in`)
 - Proper error handling with clear messages
 
 ## Code Components
@@ -253,7 +253,7 @@ Requires: Admin authentication
 - Verify database connection
 
 ### "Unauthorized" error
-- For admin access: Ensure logged in with harsh.141615.gmail.com
+- For admin access: Ensure logged in with info@ikrr.co.in
 - For customer access: Must be logged in to view own queries
 
 ### Queries not appearing
@@ -262,7 +262,7 @@ Requires: Admin authentication
 - Verify session is active
 
 ### Admin can't see all queries
-- Verify email is exactly: harsh.141615.gmail.com
+- Verify email is exactly: info@ikrr.co.in
 - Clear browser cookies and re-login
 - Check NEXT_PUBLIC_ADMIN_EMAIL environment variable
 
@@ -281,7 +281,7 @@ Requires: Admin authentication
 4. Verify query appears
 
 ### Test Admin Access
-1. Log in as harsh.141615.gmail.com
+1. Log in as info@ikrr.co.in
 2. Click profile → "Manage All Queries"
 3. Verify all queries are listed
 4. Test edit, update, and delete functionality

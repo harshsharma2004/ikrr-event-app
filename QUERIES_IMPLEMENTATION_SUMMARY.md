@@ -39,7 +39,7 @@
 - Delete queries
 - Shows customer contact information
 - Shows linked user account details
-- Only accessible to admin (harsh.141615.gmail.com)
+- Only accessible to admin (info@ikrr.co.in)
 
 ### 5. **Updated Components**
 
@@ -47,7 +47,7 @@
 - Added navigation links to "Your Queries" for logged-in users
 - Added "Manage All Queries" for admin
 - Updated mobile menu with query navigation options
-- Admin email verification for role checking
+- Admin email verification for role checking (info@ikrr.co.in)
 
 #### Footer.tsx
 - Contact form already using `/api/contact` endpoint
@@ -56,7 +56,7 @@
 
 ### 6. **Access Control**
 - Customers can only see their own queries
-- Admin (harsh.141615.gmail.com) can see all queries
+- Admin (info@ikrr.co.in) can see all queries
 - All endpoints have proper authentication/authorization checks
 - Unauthorized access returns 401 status
 
@@ -80,8 +80,8 @@ npm run dev
 3. If logged in, navigate to "Your Queries" (via profile menu)
 4. See only your submitted queries
 
-#### As Admin (harsh.141615.gmail.com):
-1. Log in with admin email
+#### As Admin (info@ikrr.co.in):
+1. Log in with info@ikrr.co.in
 2. Click profile menu → "Manage All Queries"
 3. View all customer queries
 4. Click edit button to update status/notes
@@ -177,7 +177,7 @@ prisma/
 - Restart dev server
 
 ### Admin can't see all queries
-- Verify email is exactly: `harsh.141615.gmail.com`
+- Verify email is exactly: `info@ikrr.co.in`
 - Check NEXT_PUBLIC_ADMIN_EMAIL environment variable
 - Clear browser cookies and re-login
 

@@ -2,7 +2,7 @@ import { getAuthSession } from "@/auth";
 import { db } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "harsh.141615@gmail.com";
+const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "info@ikrr.co.in";
 
 export async function DELETE(req: NextRequest) {
   try {
