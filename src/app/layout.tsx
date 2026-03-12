@@ -27,7 +27,7 @@ export default async function RootLayout({
   const session = await getAuthSession();
 
   return (
-    <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth!" suppressHydrationWarning>
       <body className={`${inter.className} bg-brand-dark text-gray-200`}>
         <AuthSessionProvider session={session}>
           <Navbar />
