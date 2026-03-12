@@ -95,8 +95,8 @@ export default function Footer() {
                   <MapPin className="w-5 h-5" />
                 </span>
                 <p className={`text-[#4B3C55] text-lg ${isGalleryPage ? 'text-center' : 'text-left'}`}>
-                  123 Event Street, Sector 15<br />
-                  Faridabad, Haryana, 121007
+                  515 a/3 prem nagar old delhi road opp Raj Cinema<br />
+                  Gurgaon, Haryana, 122001
                 </p>
               </div>
 
