@@ -3,7 +3,7 @@ import { Resend } from 'resend';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const resend = new Resend(RESEND_API_KEY);
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "harsh.141615@gmail.com";
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "info@ikrr.co.in";
 const COMPANY_NAME = "IKRR Events";
 const COMPANY_PHONE = "+91-XXXXXXXXXX";
 
