@@ -44,8 +44,8 @@ export default function Navbar() {
   // Handle book event button click with login redirect
   const handleBookEvent = () => {
     if (!session) {
-      // Redirect to login with callback to /book-event
-      router.push("/api/auth/signin?callbackUrl=/book-event");
+      // Use next-auth signIn to directly open the Google account picker (same flow as the Sign-In button)
+      signIn("google", { callbackUrl: "/book-event" });
     } else {
       // Already logged in, go directly to book-event
       router.push("/book-event");
