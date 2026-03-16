@@ -3,14 +3,23 @@ import { Resend } from 'resend';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const resend = new Resend(RESEND_API_KEY);
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "info@ikrr.co.in";
+// Admin email (used for notifications to the team)
+// Prefer using NEXT_PUBLIC_ADMIN_EMAIL in .env for easier configuration via the front-end env variables.
+const ADMIN_EMAIL =
+  process.env.ADMIN_EMAIL ||
+  process.env.NEXT_PUBLIC_ADMIN_EMAIL ||
+  "info@ikrr.co.in";
+
 const COMPANY_NAME = "IKRR Events";
 const COMPANY_PHONE = "+91-XXXXXXXXXX";
 
 // IMPORTANT: Use a verified domain email from https://resend.com/domains
 // If your domain (ikrr.co.in) is verified on Resend, you can send from info@ikrr.co.in.
 // Otherwise, Resend will reject emails to external recipients unless you use the onboarding test sender.
-const NOREPLY_EMAIL = process.env.NOREPLY_EMAIL || "info@ikrr.co.in";
+const NOREPLY_EMAIL =
+  process.env.NOREPLY_EMAIL ||
+  process.env.NEXT_PUBLIC_NOREPLY_EMAIL ||
+  "info@ikrr.co.in";
 
 if (!RESEND_API_KEY) {
   console.warn("⚠️ RESEND_API_KEY is not configured. Emails will not be sent.");
