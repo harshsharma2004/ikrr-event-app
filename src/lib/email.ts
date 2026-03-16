@@ -21,10 +21,15 @@ const NOREPLY_EMAIL =
   process.env.NEXT_PUBLIC_NOREPLY_EMAIL ||
   "info@ikrr.co.in";
 
+// If Resend is not verifying your domain yet, use this fallback sender.
+const RESEND_FALLBACK_EMAIL = "onboarding@resend.dev";
+
 if (!RESEND_API_KEY) {
   console.warn("⚠️ RESEND_API_KEY is not configured. Emails will not be sent.");
 } else {
   console.log("✓ Resend email service configured and ready");
+  console.log(`   - From: ${NOREPLY_EMAIL} (fallback ${RESEND_FALLBACK_EMAIL})`);
+  console.log(`   - Admin: ${ADMIN_EMAIL}`);
 }
 
 export async function sendBookingConfirmationEmail(
@@ -175,16 +180,29 @@ export async function sendBookingConfirmationEmail(
     </div>
   `;
 
-    const customerResponse = await resend.emails.send({
-      from: NOREPLY_EMAIL,
-      to: userEmail,
-      subject: `Booking Confirmation - Reference #${bookingDetails.id}`,
-      html: customerEmailContent
-    });
+    const sendWithFallback = async (from: string) => {
+      return await resend.emails.send({
+        from,
+        to: userEmail,
+        subject: `Booking Confirmation - Reference #${bookingDetails.id}`,
+        html: customerEmailContent,
+      });
+    };
+
+    let customerResponse = await sendWithFallback(NOREPLY_EMAIL);
+
+    // If the send fails (often due to unverified sender), retry with the Resend onboarding sender.
+    if (customerResponse.error && NOREPLY_EMAIL !== RESEND_FALLBACK_EMAIL) {
+      console.warn(
+        "⚠️ Customer email failed using configured sender. Retrying with onboarding sender..."
+      );
+      customerResponse = await sendWithFallback(RESEND_FALLBACK_EMAIL);
+    }
 
     if (customerResponse.error) {
-      console.warn("⚠️ Customer email failed (this is expected with test domain)");
-      console.warn(`   Note: To send to customer email, verify a domain at resend.com/domains`);
+      console.warn("⚠️ Customer email failed (likely due to unverified sender)");
+      console.warn(`   Error: ${customerResponse.error.message || customerResponse.error}`);
+      console.warn(`   Note: Verify your domain / sender email at resend.com/domains`);
     } else {
       console.log("✓ Customer email sent successfully");
     }
