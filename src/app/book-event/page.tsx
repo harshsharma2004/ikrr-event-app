@@ -424,10 +424,12 @@ export default function BookEventPage() {
             <label className="block text-xl font-bold text-[#4B3C55]">9. Budget Expectation</label>
             <input 
               type="text" 
+              inputMode="numeric"
+              pattern="[0-9,₹\s\-]*"
               placeholder="e.g., ₹5,00,000 - ₹10,00,000" 
               className="w-full bg-white/80 border border-[#4B3C55]/30 rounded-lg px-4 py-3 text-[#4B3C55] focus:ring-2 focus:ring-[#4B3C55] outline-none placeholder-[#4B3C55]/50"
               value={budget}
-              onChange={(e) => setBudget(e.target.value)}
+              onChange={(e) => setBudget(e.target.value.replace(/[^0-9,₹\s\-]/g, ""))}
             />
           </div>
 
@@ -445,11 +447,13 @@ export default function BookEventPage() {
               />
               <input 
                 type="tel" 
+                inputMode="numeric"
+                pattern="[0-9]*"
                 placeholder="Phone Number" 
                 required
                 className="w-full bg-white/80 border border-[#4B3C55]/30 rounded-lg px-4 py-3 text-[#4B3C55] focus:ring-2 focus:ring-[#4B3C55] outline-none placeholder-[#4B3C55]/50"
                 value={contactInfo.phone}
-                onChange={(e) => setContactInfo({...contactInfo, phone: e.target.value})}
+                onChange={(e) => setContactInfo({...contactInfo, phone: e.target.value.replace(/\D/g, "")})}
               />
               <input 
                 type="email" 

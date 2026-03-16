@@ -8,9 +8,9 @@ const COMPANY_NAME = "IKRR Events";
 const COMPANY_PHONE = "+91-XXXXXXXXXX";
 
 // IMPORTANT: Use a verified domain email from https://resend.com/domains
-// If your domain (ikrr.co.in) is not verified on Resend yet, you MUST use "onboarding@resend.dev"
-// We are defaulting to "onboarding@resend.dev" to ensure emails work during development.
-const NOREPLY_EMAIL = process.env.NOREPLY_EMAIL || "onboarding@resend.dev";
+// If your domain (ikrr.co.in) is verified on Resend, you can send from info@ikrr.co.in.
+// Otherwise, Resend will reject emails to external recipients unless you use the onboarding test sender.
+const NOREPLY_EMAIL = process.env.NOREPLY_EMAIL || "info@ikrr.co.in";
 
 if (!RESEND_API_KEY) {
   console.warn("⚠️ RESEND_API_KEY is not configured. Emails will not be sent.");

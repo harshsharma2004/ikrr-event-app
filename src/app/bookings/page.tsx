@@ -215,7 +215,7 @@ export default function AdminBookingsPage() {
         {/* Loading State */}
         {isLoading && (
           <div className="text-center py-12">
-            <p className="text-gray-600">Loading bookings...</p>
+            <p className="text-[#4B3C55]">Loading bookings...</p>
           </div>
         )}
 
@@ -232,7 +232,7 @@ export default function AdminBookingsPage() {
                     <h3 className="text-lg font-bold text-[#4B3C55] mb-2">
                       {booking.eventTypes.join(", ")}
                     </h3>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#4B3C55]">
                       Booking ID: {booking.id}
                     </p>
                   </div>
@@ -258,7 +258,7 @@ export default function AdminBookingsPage() {
                 {/* Booking Details */}
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <p className="text-gray-600 font-medium text-sm">Event Dates</p>
+                    <p className="text-[#4B3C55] font-medium text-sm">Event Dates</p>
                     <div className="text-[#4B3C55]">
                       {booking.eventDates && booking.eventDates.length > 0 ? (
                         <ul className="space-y-1">
@@ -275,15 +275,15 @@ export default function AdminBookingsPage() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-gray-600 font-medium text-sm">Venue</p>
+                    <p className="text-[#4B3C55] font-medium text-sm">Venue</p>
                     <p className="text-[#4B3C55]">{booking.eventVenue}</p>
                   </div>
                   <div>
-                    <p className="text-gray-600 font-medium text-sm">Attendees</p>
+                    <p className="text-[#4B3C55] font-medium text-sm">Attendees</p>
                     <p className="text-[#4B3C55]">{booking.attendeeCount} people</p>
                   </div>
                   <div>
-                    <p className="text-gray-600 font-medium text-sm">Budget</p>
+                    <p className="text-[#4B3C55] font-medium text-sm">Budget</p>
                     <p className="text-[#4B3C55]">{booking.budget}</p>
                   </div>
                 </div>
@@ -326,7 +326,7 @@ export default function AdminBookingsPage() {
                 {/* Uploaded Image */}
                 {booking.brandingFileUrl && (
                   <div className="mb-4">
-                    <p className="text-sm font-medium text-gray-600 mb-2">
+                    <p className="text-sm font-medium text-[#4B3C55] mb-2">
                       Branding Reference
                     </p>
                     <img
@@ -338,7 +338,7 @@ export default function AdminBookingsPage() {
                 )}
 
                 {/* Timestamps */}
-                <div className="text-xs text-gray-500 border-t pt-3 mb-4">
+                <div className="text-xs text-[#4B3C55]/80 border-t pt-3 mb-4">
                   <p>
                     Submitted: {new Date(booking.createdAt).toLocaleDateString()}{" "}
                     {new Date(booking.createdAt).toLocaleTimeString()}
@@ -375,7 +375,7 @@ export default function AdminBookingsPage() {
         {!isLoading && filteredBookings.length === 0 && (
           <div className="text-center py-12">
             <AlertCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600 text-lg">No bookings found</p>
+            <p className="text-[#4B3C55] text-lg">No bookings found</p>
           </div>
         )}
       </div>
@@ -391,19 +391,19 @@ export default function AdminBookingsPage() {
             {/* Booking Details */}
             <div className="space-y-4 mb-6 p-4 bg-gray-50 rounded-lg">
               <div>
-                <p className="text-sm text-gray-600">Events:</p>
+                <p className="text-sm text-[#4B3C55]">Events:</p>
                 <p className="font-semibold text-[#4B3C55]">
                   {selectedBooking.eventTypes.join(", ")}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">Customer:</p>
+                <p className="text-sm text-[#4B3C55]">Customer:</p>
                 <p className="text-[#4B3C55]">
                   {selectedBooking.user?.name || "N/A"} ({selectedBooking.user?.email})
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">Venue:</p>
+                <p className="text-sm text-[#4B3C55]">Venue:</p>
                 <p className="text-[#4B3C55]">{selectedBooking.eventVenue}</p>
               </div>
             </div>
@@ -417,7 +417,7 @@ export default function AdminBookingsPage() {
                 <select
                   value={editStatus}
                   onChange={(e) => setEditStatus(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4B3C55]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4B3C55] text-[#4B3C55]"
                 >
                   <option value="PENDING">Pending</option>
                   <option value="CONFIRMED">Confirmed</option>

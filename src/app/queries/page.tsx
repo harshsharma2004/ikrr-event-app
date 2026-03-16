@@ -219,7 +219,7 @@ export default function AdminQueriesPage() {
         {/* Loading State */}
         {isLoading && (
           <div className="text-center py-12">
-            <p className="text-gray-600">Loading queries...</p>
+            <p className="text-[#4B3C55]">Loading queries...</p>
           </div>
         )}
 
@@ -246,7 +246,7 @@ export default function AdminQueriesPage() {
                       </span>
                     </div>
 
-                    <div className="text-sm text-gray-600 mb-3">
+                    <div className="text-sm text-[#4B3C55] mb-3">
                       <p>
                         <strong>Email:</strong> {query.email}
                       </p>
@@ -260,7 +260,7 @@ export default function AdminQueriesPage() {
                           <strong>User Account:</strong> {query.user.email}
                         </p>
                       )}
-                      <p className="text-xs text-gray-500 mt-2">
+                      <p className="text-xs text-[#4B3C55]/80 mt-2">
                         Submitted{" "}
                         {new Date(query.createdAt).toLocaleDateString()}{" "}
                         {new Date(query.createdAt).toLocaleTimeString()}
@@ -305,8 +305,8 @@ export default function AdminQueriesPage() {
         {/* Empty State */}
         {!isLoading && filteredQueries.length === 0 && (
           <div className="text-center py-12">
-            <AlertCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600 text-lg">No queries found</p>
+            <AlertCircle className="w-12 h-12 text-[#4B3C55]/40 mx-auto mb-4" />
+            <p className="text-[#4B3C55] text-lg">No queries found</p>
           </div>
         )}
       </div>
@@ -322,13 +322,13 @@ export default function AdminQueriesPage() {
             {/* Query Details */}
             <div className="space-y-4 mb-6 p-4 bg-gray-50 rounded-lg">
               <div>
-                <p className="text-sm text-gray-600">From:</p>
+                <p className="text-sm text-[#4B3C55]">From:</p>
                 <p className="font-semibold text-[#4B3C55]">{selectedQuery.name}</p>
-                <p className="text-sm text-gray-600">{selectedQuery.email}</p>
+                <p className="text-sm text-[#4B3C55]">{selectedQuery.email}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">Message:</p>
-                <p className="text-gray-700 bg-white p-3 rounded mt-1">
+                <p className="text-sm text-[#4B3C55]">Message:</p>
+                <p className="text-[#4B3C55] bg-white p-3 rounded mt-1">
                   {selectedQuery.message}
                 </p>
               </div>
@@ -343,7 +343,7 @@ export default function AdminQueriesPage() {
                 <select
                   value={editStatus}
                   onChange={(e) => setEditStatus(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4B3C55]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4B3C55] text-[#4B3C55]"
                 >
                   <option value="NEW">New</option>
                   <option value="IN_PROGRESS">In Progress</option>
@@ -361,7 +361,7 @@ export default function AdminQueriesPage() {
                   onChange={(e) => setEditNotes(e.target.value)}
                   placeholder="Add notes about this query..."
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4B3C55] resize-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4B3C55] resize-none text-[#4B3C55] placeholder:text-[#4B3C55]/60"
                 />
               </div>
             </div>

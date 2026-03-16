@@ -275,7 +275,7 @@ export default function Navbar() {
             <Link href="/#home" onClick={() => setIsMobileMenuOpen(false)} className="block text-[#4B3C55] py-1 hover:text-brand-gold">Home</Link>
             <Link href="/#about" onClick={() => setIsMobileMenuOpen(false)} className="block text-[#4B3C55] py-1 hover:text-brand-gold">About</Link>
 
-            <div className="pt-2 border-t border-gray-700/20">
+            <div className="pt-2 border-t border-gray-700/20" data-events-menu>
               <button 
                 onClick={() => setIsEventsOpen(!isEventsOpen)}
                 className="mt-2 font-bold text-[#4B3C55] flex items-center space-x-2"
@@ -285,7 +285,7 @@ export default function Navbar() {
               </button>
               {isEventsOpen && (
                 <div className="pl-2 space-y-1 mt-1">
-                  {eventLinks.slice(0, 4).map((link) => (
+                  {eventLinks.map((link) => (
                     <Link 
                       key={link.href} 
                       href={link.href} 
@@ -301,30 +301,32 @@ export default function Navbar() {
                 </div>
               )}
 
-              <button 
-                onClick={() => setIsWeddingOpen(!isWeddingOpen)}
-                className="mt-3 font-bold text-[#4B3C55] flex items-center space-x-2"
-              >
-                <span>Wedding</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isWeddingOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {isWeddingOpen && (
-                <div className="pl-2 space-y-1 mt-1">
-                  {weddingLinks.slice(0, 3).map((link) => (
-                    <Link 
-                      key={link.href} 
-                      href={link.href} 
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        setIsWeddingOpen(false);
-                      }} 
-                      className="block text-[#4B3C55] text-sm"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <div data-wedding-menu>
+                <button 
+                  onClick={() => setIsWeddingOpen(!isWeddingOpen)}
+                  className="mt-3 font-bold text-[#4B3C55] flex items-center space-x-2"
+                >
+                  <span>Wedding</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isWeddingOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isWeddingOpen && (
+                  <div className="pl-2 space-y-1 mt-1">
+                    {weddingLinks.map((link) => (
+                      <Link 
+                        key={link.href} 
+                        href={link.href} 
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          setIsWeddingOpen(false);
+                        }} 
+                        className="block text-[#4B3C55] text-sm"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             <Link href="/gallery" onClick={() => setIsMobileMenuOpen(false)} className="block text-[#4B3C55] mt-2">Gallery</Link>
@@ -385,7 +387,7 @@ export default function Navbar() {
               Book Your Event
             </button>
             <div className="flex justify-center">
-              {renderAuthButtons()}
+              {!session && renderAuthButtons()}
             </div>
           </div>
         </div>

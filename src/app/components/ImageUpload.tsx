@@ -74,9 +74,9 @@ export default function ImageUpload({
       {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
+          <div className="bg-white rounded-lg max-w-md w-full p-6 text-gray-900">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Add Gallery Photo</h2>
+              <h2 className="text-xl font-bold text-gray-900">Add Gallery Photo</h2>
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-1 hover:bg-gray-100 rounded"
@@ -87,7 +87,7 @@ export default function ImageUpload({
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-sm font-medium text-gray-900 mb-1">
                   Image URL *
                 </label>
                 <input
@@ -95,7 +95,7 @@ export default function ImageUpload({
                   value={imageUrl}
                   onChange={(e) => setImageUrl(e.target.value)}
                   placeholder="https://example.com/image.jpg"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder:text-gray-400"
                 />
                 <p className="text-xs text-gray-500 mt-1">
                   Paste the URL of your image. You can use services like Imgur, Firebase Storage, or any image hosting.
@@ -103,7 +103,7 @@ export default function ImageUpload({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-sm font-medium text-gray-900 mb-1">
                   Caption (Optional)
                 </label>
                 <input
@@ -111,7 +111,7 @@ export default function ImageUpload({
                   value={caption}
                   onChange={(e) => setCaption(e.target.value)}
                   placeholder="Description of the photo"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder:text-gray-400"
                 />
               </div>
 

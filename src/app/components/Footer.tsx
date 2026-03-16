@@ -138,6 +138,12 @@ export default function Footer() {
                     type="tel" 
                     id="phone" 
                     name="phone" 
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    onInput={(e) => {
+                      const input = e.currentTarget as HTMLInputElement;
+                      input.value = input.value.replace(/\D/g, "");
+                    }}
                     className="w-full px-4 py-2.5 rounded-lg bg-white border-none text-[#4B3C55] focus:outline-none focus:ring-2 focus:ring-[#4B3C55]/20 shadow-sm" 
                 />
               </div>
